@@ -1,5 +1,5 @@
-# APIキーを含む設定ファイル（必要に応じて）
-# config.js
+# APIキーを含む設定ファイル
+config.js
 
 # エディタ設定
 .vscode/
