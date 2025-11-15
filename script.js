@@ -304,13 +304,14 @@ function displayQuestions(questions) {
 
 // Twitter（X）投稿画面を開く
 function openTwitterIntent(question) {
-    const hashtags = '3つの質問,ミツノ';
-    // AppTalentHubのURLを使用
-    const url = 'https://apptalenthub.co.jp/';
+    const hashtags = '3つの質問';
+    // GitHub PagesのURLを使用
+    const url = 'https://tsubasagit.github.io/mitsuno/';
     
     // テキストを構築（Twitterの文字数制限280文字を考慮）
-    const hashtagText = hashtags.split(',').map(tag => `#${tag.trim()}`).join(' ');
-    let text = `${question}\n\n${hashtagText}`;
+    // 「あなたへの質問：」を冒頭に追加
+    const hashtagText = `#${hashtags}`;
+    let text = `あなたへの質問：${question}\n\n${hashtagText}`;
     
     // URLを追加（文字数制限を考慮）
     const maxLength = 280;
@@ -320,12 +321,10 @@ function openTwitterIntent(question) {
     }
     
     // X（Twitter）のIntent URLを使用
-    // ポップアップウィンドウでの認証エラーを避けるため、同じタブで開く
     const twitterUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}`;
     
-    // 同じタブで開く（認証フローの問題を回避）
-    // ユーザーは投稿後にブラウザの戻るボタンで戻れます
-    window.location.href = twitterUrl;
+    // 新規タブで開く
+    window.open(twitterUrl, '_blank', 'noopener,noreferrer');
 }
 
 // テキストをクリップボードにコピーする関数（オプション）
