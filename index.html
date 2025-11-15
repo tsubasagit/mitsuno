@@ -14,24 +14,6 @@
         </header>
 
         <main>
-            <!-- APIキー入力モーダル -->
-            <div id="apiKeyModal" class="modal" style="display: none;">
-                <div class="modal-content">
-                    <h2>OpenAI APIキーの設定</h2>
-                    <p>初回のみ、OpenAI APIキーを入力してください。キーはブラウザのローカルストレージに保存されます。</p>
-                    <input 
-                        type="password" 
-                        id="apiKeyInput" 
-                        placeholder="sk-..." 
-                        class="api-key-input"
-                    >
-                    <div class="modal-buttons">
-                        <button id="saveApiKeyBtn" class="modal-btn">保存して開始</button>
-                    </div>
-                    <p class="modal-note">※ APIキーはこのデバイスのみに保存され、サーバーには送信されません</p>
-                </div>
-            </div>
-
             <section class="input-section">
                 <form id="jobForm">
                     <label for="jobInput">あなたの職業を教えてください</label>
