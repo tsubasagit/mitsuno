@@ -21,15 +21,58 @@ cd Github-ikemori-mituno
 
 ### 2. OpenAI APIキーの設定
 
-アプリは初回起動時にユーザーにAPIキーの入力を求めます。キーはブラウザのローカルストレージに保存されます。
+**⚠️ セキュリティに関する重要事項**
 
-**開発用**: `config.js`ファイルで直接設定することも可能です（GitHubに公開する場合は非推奨）：
+GitHub Pagesで一般公開する場合、APIキーの管理方法を慎重に選択してください。
+
+#### 方法1: DIFY Webhookを使用（推奨・最もセキュア）⭐
+
+DIFYのWebhookトリガーを使用することで、APIキーをクライアント側に露出させずに、ワークフローを視覚的に設計できます。
+
+1. [DIFY](https://dify.ai/) でアカウントを作成
+2. **ワークフロー**を作成し、Webhookトリガーを設定
+3. プロンプトと出力ノードを設定
+4. Webhook URLを取得
+5. `config.js` で設定：
 
 ```javascript
-window.OPENAI_API_KEY = 'your-api-key-here';
+window.DIFY_WEBHOOK_URL = 'https://api.dify.ai/v1/workflows/run?user=webhook&token=xxxxx';
 ```
 
-**本番環境**: ユーザーが各自のAPIキーを入力する方式のため、GitHubに公開しても安全です。
+**メリット**: 
+- ✅ APIキーをクライアント側に露出させない（最もセキュア）
+- ✅ ワークフローを視覚的に設計できる
+- ✅ GitHub Pagesで公開しても安全
+
+詳細は `DIFY_SETUP.md` を参照してください。
+
+#### 方法2: プロキシサーバーを使用（セキュア）⭐
+
+APIキーをクライアント側に露出させない最も安全な方法です。
+
+1. `proxy-server/` ディレクトリのプロキシサーバーをデプロイ（Heroku、Railway、Renderなど）
+2. `config.js` でプロキシサーバーのURLを設定：
+
+```javascript
+window.PROXY_SERVER_URL = 'https://your-proxy-server.herokuapp.com';
+```
+
+詳細は `proxy-server/README.md` と `SECURITY.md` を参照してください。
+
+#### 方法3: ユーザー各自がAPIキーを入力（現在の実装）
+
+アプリは初回起動時にユーザーにAPIキーの入力を求めます。キーはブラウザのローカルストレージに保存されます。
+
+**メリット**: サーバー不要、実装が簡単  
+**デメリット**: ユーザーがAPIキーを取得する必要がある
+
+#### 方法4: 開発用（非推奨・本番環境では使用しない）
+
+`config.js`ファイルで直接設定することも可能ですが、**GitHubに公開する場合は絶対に使用しないでください**：
+
+```javascript
+window.OPENAI_API_KEY = 'your-api-key-here'; // ⚠️ 絶対に公開リポジトリに含めない
+```
 
 ### 3. ローカルでテスト
 
@@ -47,10 +90,37 @@ npx http-server
 
 ### 4. GitHub Pagesで公開
 
-1. GitHubリポジトリにプッシュ
-2. リポジトリのSettings > Pagesに移動
-3. Sourceを「main」ブランチ（または使用しているブランチ）に設定
-4. 保存後、数分で `https://<username>.github.io/<repository-name>` でアクセス可能
+#### ステップ1: GitHubリポジトリを作成
+
+1. [GitHub](https://github.com)にログイン
+2. 右上の「+」ボタンから「New repository」を選択
+3. リポジトリ名を入力（例：`mitsuno-3questions`）
+4. 「Public」を選択（GitHub Pagesは無料プランでもPublicリポジトリで利用可能）
+5. 「Create repository」をクリック
+
+#### ステップ2: ローカルリポジトリをGitHubにプッシュ
+
+```bash
+# リモートリポジトリを追加（<username>と<repository-name>を実際の値に置き換え）
+git remote add origin https://github.com/<username>/<repository-name>.git
+
+# ブランチ名をmainに変更（GitHub Pagesのデフォルト設定に合わせる）
+git branch -M main
+
+# GitHubにプッシュ
+git push -u origin main
+```
+
+#### ステップ3: GitHub Pagesを有効化
+
+1. GitHubリポジトリのページで「Settings」タブをクリック
+2. 左サイドバーの「Pages」をクリック
+3. 「Source」セクションで「Deploy from a branch」を選択
+4. 「Branch」で「main」を選択し、「/ (root)」を選択
+5. 「Save」をクリック
+6. 数分待つと、`https://<username>.github.io/<repository-name>` でアクセス可能になります
+
+**注意**: 初回デプロイには数分かかる場合があります。デプロイが完了すると、リポジトリの「Settings > Pages」に公開URLが表示されます。
 
 ## ファイル構成
 
