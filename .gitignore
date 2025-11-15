@@ -1,0 +1,21 @@
+# APIキーを含む設定ファイル（必要に応じて）
+# config.js
+
+# エディタ設定
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS設定
+.DS_Store
+Thumbs.db
+
+# ログファイル
+*.log
+
+# 一時ファイル
+*.tmp
+*.temp
+
