@@ -1,5 +1,6 @@
 # APIキーを含む設定ファイル
-config.js
+# 学習用として、config.jsはGitHubに公開します（DIFY側で制限をかけています）
+# config.js
 
 # エディタ設定
 .vscode/
