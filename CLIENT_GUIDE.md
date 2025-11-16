@@ -208,7 +208,7 @@ https://github.com/tsubasagit/mitsuno
 
 ### 使用技術
 - **フロントエンド**: HTML, CSS, JavaScript
-- **AI API**: Dify（OpenAI gpt-4o-mini）
+- **AI API**: Dify（OpenAI gpt-4o）
 - **ホスティング**: GitHub Pages
 - **バージョン管理**: Git/GitHub
 
