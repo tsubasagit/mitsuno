@@ -4,9 +4,9 @@
 //
 // DIFYのAPIエンドポイントとAPI Keyを設定します
 // エンドポイント: https://api.dify.ai/v1
-// API Key: app-E9kzumkD86WEO0cgaAPtT0l8
+// API Key: app-dOfcQah0UE6uA6q0nxk9RZXH
 window.DIFY_API_ENDPOINT = 'https://api.dify.ai/v1';
-window.DIFY_API_KEY = 'app-E9kzumkD86WEO0cgaAPtT0l8';
+window.DIFY_API_KEY = 'app-dOfcQah0UE6uA6q0nxk9RZXH';
 
 // テストモード: trueにすると、APIキー入力なしでモックデータを使用します
 // DIFY APIを使用する場合は false に設定してください
