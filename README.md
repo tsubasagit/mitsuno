@@ -154,6 +154,18 @@ git push -u origin main
 const hashtags = '3つの質問,ミツノ';
 ```
 
+## コミットメッセージについて
+
+⚠️ **重要**: コミットメッセージは英語で記述してください。
+- 日本語のコミットメッセージは文字化けする可能性があります
+- 英語のコミットメッセージを使用することで、GitHub上で正しく表示されます
+
+### コミットメッセージの例
+- ✅ `Add Twitter sharing functionality`
+- ✅ `Update DIFY API configuration`
+- ✅ `Fix responsive design issues`
+- ❌ `Twitter共有機能を追加` (文字化けの可能性)
+
 ## ライセンス
 
 MIT License
